@@ -92,7 +92,10 @@ export class NavBarComponent implements OnInit {
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            if(this.check.ip == "192.168.1.1"){
+            this.onMessageYes()
+              this.saveCodePermise()
+
+            /* if(this.check.ip == "192.168.1.1"){
               this.onMessageYes()
               this.saveCodePermise()
             }else{
@@ -101,7 +104,7 @@ export class NavBarComponent implements OnInit {
                 title: 'Error',
                 text: 'Conectate a una red segura para generar un codigo de acceso',
               })
-            }
+            } */
             
           } else if (result.isDenied) {
             this.onMessageNo()
