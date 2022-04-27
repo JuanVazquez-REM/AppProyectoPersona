@@ -79,6 +79,7 @@ export class NavBarComponent implements OnInit {
 
 
   solicitud(){
+    this.check.checkToken()
     this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
       if(data.tipo=="confirmacion"){
         this.dataWs = data
@@ -91,8 +92,17 @@ export class NavBarComponent implements OnInit {
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            this.onMessageYes()
-            this.saveCodePermise()
+            if(this.check.ip == "192.168.1.1"){
+              this.onMessageYes()
+              this.saveCodePermise()
+            }else{
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Conectate a una red segura para generar un codigo de acceso',
+              })
+            }
+            
           } else if (result.isDenied) {
             this.onMessageNo()
           }

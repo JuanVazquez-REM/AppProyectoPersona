@@ -72,7 +72,64 @@ export class ListarPostsComponent implements OnInit {
   }
 
 
-  deletePost(post){
+  async deletePost(post){
+    this.check.checkToken()
+    this.rol = this.check.rol
+
+    if(this.rol == "white" || this.rol == "grey"){
+      console.log("User Bajo")
+      if(this.acceso){
+        const { value: codigo } = await Swal.fire({
+          title: 'Codigo de confirmacion',
+          input: 'text',
+          inputLabel: 'ingresa el codigo de confirmacion',
+          inputPlaceholder: '',
+        })
+        
+        this.api.verifyCodePermise({user_id:this.check.user.id,codigo:codigo}).subscribe(data => {
+          if(data.status){
+            this.deletePostDirect(post)
+            this.acceso = false
+          }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Codigo incorrecto',
+              text: '',
+            })
+          }
+        }, error =>{
+          Swal.fire({
+            icon: 'error',
+            title: 'Algo salio mal',
+            text: 'Intentelo mas tarde',
+          })
+          console.log(error)
+        });
+        
+
+
+      }else{
+        Swal.fire({
+          title: 'No tienes permiso para realizar esta accion, deseas solicitar uno?',
+          showDenyButton: false,
+          showCancelButton: true,
+          confirmButtonText: 'Si',
+          denyButtonText: `No`,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            this.connectWS()
+          } else if (result.isDenied) {
+            this.acceso = false
+          }
+        })
+      }
+    }else{
+      this.deletePostDirect(post)
+    }
+  }
+
+  deletePostDirect(post){
     Swal.fire({
       title: 'Seguro que deseas eliminar el post?',
       showDenyButton: false,
@@ -96,7 +153,6 @@ export class ListarPostsComponent implements OnInit {
         
       }
     })
-    
   }
 
   getPostById(post){

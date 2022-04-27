@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit,OnDestroy {
   login() {
     this.setRequest()
     this.api.login(this.request).subscribe(async data => {
+      console.log(data.ip)
       if(data.status){
         switch(data.rol){
           case "white":

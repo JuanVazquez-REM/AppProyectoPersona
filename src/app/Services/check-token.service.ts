@@ -12,6 +12,7 @@ export class CheckTokenService {
   public rol:String;
   public session:Boolean = false
   public user:User;
+  public ip:String;
   constructor(private api: ServiciosService,public router: Router, private cookies: CookieService) { }
 
   getSession():Boolean{
