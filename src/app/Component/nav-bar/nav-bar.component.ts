@@ -94,18 +94,6 @@ export class NavBarComponent implements OnInit {
           if (result.isConfirmed) {
             this.onMessageYes()
               this.saveCodePermise()
-
-            /* if(this.check.ip == "192.168.1.1"){
-              this.onMessageYes()
-              this.saveCodePermise()
-            }else{
-              Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Conectate a una red segura para generar un codigo de acceso',
-              })
-            } */
-            
           } else if (result.isDenied) {
             this.onMessageNo()
           }
