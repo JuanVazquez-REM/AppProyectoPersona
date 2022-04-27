@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
-    
+    console.log(environment.wsURL)
   }
   
   setRequest() {
