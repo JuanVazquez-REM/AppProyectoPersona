@@ -1,0 +1,17 @@
+.hove{
+    transition-duration: 0.4s;
+}
+
+.hove:hover{
+    color: rgb(87, 150, 144);
+}
+
+.btn-outline-green{
+    transition-duration: 0.4s;
+    background-color: #fff; 
+}
+
+.btn-outline-green:hover{
+    background-color: rgb(87, 150, 144); 
+    color: white;
+}

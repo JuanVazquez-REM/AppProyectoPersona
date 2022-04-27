@@ -1,0 +1,26 @@
+.btn-outline-green{
+    transition-duration: 0.4s;
+    background-color: #e0e0e0; 
+}
+
+.btn-outline-green:hover{
+    background-color: rgb(87, 150, 144); 
+    color: white;
+}
+
+.btn-outline-green-white{
+    transition-duration: 0.4s;
+    background-color: #fff; 
+}
+
+.btn-outline-green-white:hover{
+    background-color: rgb(87, 150, 144); 
+    color: white;
+}
+
+@font-face {
+    font-family: 'Keep on Truckin';
+    src: url('../../../assets/fonts/KeeponTruckin.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}

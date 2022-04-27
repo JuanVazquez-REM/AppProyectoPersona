@@ -1,0 +1,22 @@
+<div style="background-color: #ebd9be; top: 0; left: 0; bottom: 0; right: 0; position: fixed;">
+    <div class="container  h-100">
+        <div class="row align-items-center h-100">
+            <div class="col offset-lg-4 col-lg-4 mx-auto">
+            <div class="card" style="max-width: 30rem; box-shadow: 10px -10px rgb(87, 150, 144);">
+                <div class="card-body">
+                <h5 class="card-title text-center title">Se envio un codigo de confirmacion a tu email</h5>
+                    <form [formGroup] = "confirmacionForm" (ngSubmit)="confirmacion()">
+                        <div class="form-group">
+                            <span>Codigo</span>
+                            <input type="text" class="form-control form-control-sm" formControlName = "codigo" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-outline-green btn-block btn-sm"><b>Confirmar email</b></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div style="background-color:#dcffff;">
+    <app-nav-bar></app-nav-bar>
+    
+        <br>
+        <div class="container" style="background-color: #fff;box-shadow: 10px -10px #b2dafa">
+            <br>
+            <div class="row">
+                <div class="col text-start">
+                    <h1><b>Posts</b></h1>
+                </div>
+                <div class="col col-lg-3 text-end">
+                    <button type="button" class="btn btn-outline-green btn-block btn-sm" data-toggle="modal" data-target="#createPostModal"><b>Nuevo</b></button>
+                    <button type="button" class="btn btn-outline-green btn-block btn-sm"  routerLink="/listar/posts" ><b>Administrar</b></button>
+                </div>
+            </div>
+            <br><br>
+            <div>
+                <app-card-post [posts]='post' *ngFor='let post of posts'></app-card-post>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createPostModalLabel">Nuevo post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup] = "createForm" (ngSubmit)="createPost()">
+                <div class="form-group">
+                    <span>Titulo</span>
+                    <input type="text" class="form-control" formControlName = "titulo">
+                </div>
+                <div class="form-group">
+                    <span>Texto</span>
+                    <textarea class="form-control" formControlName = "texto"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-outline-primary ">Crear post</button>
+                </div>
+                </form>
+                
+            </div>
+            
+            </div>
+        </div>
+
+
+
